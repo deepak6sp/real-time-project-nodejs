@@ -1,0 +1,23 @@
+{
+  "name": "real-time-project-nodejs",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "https://github.com/deepak6sp/real-time-project-nodejs.git",
+  "author": "deepak6sp <deepak6sp@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "scripts": {
+    "server": "nodemon server/index.js --exec babel-node",
+    "db:start": "docker run --name rethinkdb -v $PWD:/data -p 8090:8080 -d rethinkdb",
+    "db:stop": "docker stop rethinkdb && docker rm rethinkdb",
+    "start": "yarn run db:start && yarn run server",
+    "end": "yarn run db:stop"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
